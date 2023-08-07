@@ -1,11 +1,17 @@
-﻿#requires -modules @{ ModuleName="PnP.PowerShell"; ModuleVersion="2.0.0" }, @{ ModuleName="Tenant.SiteCertification"; ModuleVersion="1.0.0" }
+﻿#requires -Version 7
+
+$ErrorActionPreference = 'Stop'
+
+Import-Module -Name "PnP.PowerShell"           -MinimumVersion "2.2.0"   -Force -ErrorAction Stop
+Import-Module -Name "PSFramework"              -MinimumVersion "1.8.291" -Force -ErrorAction Stop
+Import-Module -Name "Tenant.SiteCertification" -MinimumVersion "1.0.0"   -Force -ErrorAction Stop
 
 [System.Net.ServicePointManager]::SecurityProtocol     = [System.Net.SecurityProtocolType]::Tls12
 [System.Net.Http.HttpClient]::DefaultProxy.Credentials = [System.Net.CredentialCache]::DefaultCredentials
 
 $timestamp = Get-Date -Format FileDateTime
 
-Start-SiteCertificationLogFileLogger -FilePath "C:\_temp\logs\database-schema_$timestamp.csv"
+Start-SiteCertificationLogFileLogger -FilePath "C:\_temp\logs\site-exclusion-import_$timestamp.csv"
 
 $tc = New-SiteCertificationTenantConnection `
         -ClientId              $env:O365_CLIENTID `

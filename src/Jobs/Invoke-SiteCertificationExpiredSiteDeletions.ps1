@@ -1,4 +1,5 @@
-﻿#requires -Version 7.2
+﻿
+#requires -Version 7.2
 
 $ErrorActionPreference = 'Stop'
 
@@ -11,7 +12,7 @@ Import-Module -Name "Tenant.SiteCertification" -MinimumVersion "1.0.0"   -Force 
 
 $timestamp = Get-Date -Format FileDateTime
 
-Start-SiteCertificationLogFileLogger -FilePath "C:\_temp\logs\site-import_$timestamp.csv"
+Start-SiteCertificationLogFileLogger -FilePath "C:\_temp\logs\site-deletions-_$timestamp.csv"
 
 $tc = New-SiteCertificationTenantConnection `
         -ClientId              $env:O365_CLIENTID `
@@ -41,7 +42,7 @@ Connect-SiteCertificationService `
         -ErrorAction        Stop
 
 
-Invoke-SiteCertificationSiteCollectionImport -Verbose
-                                                  
+# xx
+
 Stop-SiteCertificationLogFileLogger
 
