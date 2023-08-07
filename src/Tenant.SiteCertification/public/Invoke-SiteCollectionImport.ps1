@@ -77,7 +77,7 @@
         
         $json = $tenantSites | ConvertTo-Json -Compress -AsArray 
 
-        Invoke-StoredProcedure -StoredProcedure "sitecertification.proc_MergeSiteCollection" -Parameters @{ json =  $json } -CommandTimout 300
+        Invoke-StoredProcedure -StoredProcedure "sitecertification.proc_MergeSiteCollection" -Parameters @{ json =  $json } -CommandTimeout 300
     }
     end
     {
