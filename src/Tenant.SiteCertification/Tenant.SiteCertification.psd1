@@ -38,7 +38,9 @@
                         'Start-LogFileLogger',
                         'Stop-LogFileLogger',
                         'Update-DatabaseSchema',
-                        'Get-CachedObject'
+                        'Get-CachedObject',
+                        'Set-SiteCollectionNoAccess',
+                        'Set-SiteCollectionUnlock'
 
     DefaultCommandPrefix = "SiteCertification" 
 }

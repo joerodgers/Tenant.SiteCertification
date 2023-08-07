@@ -23,4 +23,6 @@
     Set-CachedObject -Name "Configuration" -Object $Configuration -ErrorAction Stop
 
     Connect-SharePointTenant -ErrorAction Stop
+
+    Write-PSFMessage -Message "Connected to SiteCertification Service" -Level Verbose  
 }

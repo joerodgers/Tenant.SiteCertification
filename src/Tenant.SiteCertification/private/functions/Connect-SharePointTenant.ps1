@@ -31,6 +31,8 @@
                         -Thumbprint $tenantConnection.CertificateThumbprint `
                         -Tenant     $tenantConnection.TenantId.ToString() `
                         -ErrorAction Stop
+            
+            Write-PSFMessage -Message "Connected to $tenantAdminUrl" -Level Verbose  
         }
         catch
         {

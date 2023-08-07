@@ -104,6 +104,8 @@
 
             if( -not $?) { return }
         }
+
+        Invoke-StoredProcedure -StoredProcedure "sitecertification.proc_AddSiteCollectionAuditEvent" -Parameters @{ siteUrl = 'DatabaseSchema'; auditEvent = 'DatabaseSchema-Updated'; auditEventDate = Get-Date }
     }
     end
     {

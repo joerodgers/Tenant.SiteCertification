@@ -16,6 +16,8 @@
 
         Clear-CachedObject -Name "Configuration" -ErrorAction Stop
     
+        Write-PSFMessage -Message "Cached objects cleared successfully" -Level Verbose  
+        
         try 
         {
             $null = Disconnect-PnPOnline -ErrorAction SilentlyContinue
@@ -23,6 +25,8 @@
         catch
         {
         }
+        
+        Write-PSFMessage -Message "Disconnected from SharePoint Online" -Level Verbose  
     }
     end
     {
