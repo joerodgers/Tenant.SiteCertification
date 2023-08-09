@@ -10,7 +10,7 @@
 
     process
     {
-        $configuration = Get-CachedObject -Name "Configuration"
+        $configuration = Get-DataTable -StoredProcedure "sitecertification.proc_GetSiteCertificationConfiguration" -As PSObject -ErrorAction Stop
 
         try
         {

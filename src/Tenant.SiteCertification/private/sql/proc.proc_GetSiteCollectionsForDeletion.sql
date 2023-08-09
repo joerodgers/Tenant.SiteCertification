@@ -1,8 +1,11 @@
 ﻿CREATE OR ALTER PROCEDURE [sitecertification].[proc_GetSiteCollectionsForDeletion]
-    @datetime                        DATETIME2(0),
-    @notificationsBeforeNoAccessLock INT
+    @datetime DATETIME2(0)
 AS
 BEGIN
+
+    DECLARE @notificationsBeforeNoAccessLock INT
+
+    EXEC @notificationsBeforeNoAccessLock = sitecertification.proc_GetSiteCertificationConfigurationValue 'NotificationsBeforeNoAccessLock'
 
     SELECT
         SiteUrl,
@@ -18,4 +21,5 @@ BEGIN
         LockState = 2 AND 
         NoticeCount >= @notificationsBeforeNoAccessLock AND 
         LockDate <= @datetime
+
 END

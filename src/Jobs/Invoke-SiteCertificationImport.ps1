@@ -26,20 +26,10 @@ $dc = New-SiteCertificationDatabaseConnection `
         -CertificateThumbprint $env:O365_THUMBPRINT `
         -TenantId              "ef74271e-fef6-44f2-802c-7142413a35c6"
 
-$cfg = New-SiteCertificationConfiguration `
-        -ExecutionDate                   ([DateTime]::Today) `
-        -VerificationIntervalDays        90 `
-        -NotificationFrequencyDays       7 `
-        -NotificationsBeforeNoAccessLock 6 `
-        -LockedDaysBeforeDeletion        45 `
-        -ErrorAction                     Stop   
-
 Connect-SiteCertificationService `
         -DatabaseConnection $dc `
         -TenantConnection   $tc `
-        -Configuration      $cfg `
         -ErrorAction        Stop
-
 
 Invoke-SiteCertificationSiteCollectionImport -Verbose
                                                   

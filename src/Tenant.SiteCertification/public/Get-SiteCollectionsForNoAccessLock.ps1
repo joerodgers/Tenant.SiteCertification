@@ -7,7 +7,7 @@
 
     process
     {
-        $configuration = Get-CachedObject -Name "Configuration" -ErrorAction Stop
+        $configuration = Get-DataTable -StoredProcedure "sitecertification.proc_GetSiteCertificationConfiguration" -As PSObject -ErrorAction Stop
 
         $parameters = @{
             datetime                        = $configuration.ExecutionDate

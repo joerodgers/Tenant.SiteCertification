@@ -40,7 +40,9 @@
                         'Update-DatabaseSchema',
                         'Get-CachedObject',
                         'Set-SiteCollectionNoAccess',
-                        'Set-SiteCollectionUnlock'
+                        'Set-SiteCollectionUnlock',
+                        'Get-Configuration',
+                        'Set-Configuration'
 
     DefaultCommandPrefix = "SiteCertification" 
 }

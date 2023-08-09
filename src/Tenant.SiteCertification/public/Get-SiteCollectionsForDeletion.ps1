@@ -10,12 +10,9 @@
     }
     process
     {
-        $configuration = Get-CachedObject -Name "Configuration" -ErrorAction Stop
+        $configuration = Get-DataTable -StoredProcedure "sitecertification.proc_GetSiteCertificationConfiguration" -As PSObject -ErrorAction Stop
 
-        $parameters = @{
-            notificationsBeforeNoAccessLock = $configuration.NotificationsBeforeNoAccessLock # just as a precaution
-            datetime                        = $configuration.ExecutionDate.AddDays( $configuration.LockedDaysBeforeDeletion * -1 )
-        }
+        $parameters = @{ datetime = $configuration.ExecutionDate.AddDays( $configuration.LockedDaysBeforeDeletion * -1 ) }
 
         Get-DataTable -StoredProcedure "sitecertification.proc_GetSiteCollectionsForDeletion" -Parameters $parameters -As "PSObject" -ErrorAction Stop
     }

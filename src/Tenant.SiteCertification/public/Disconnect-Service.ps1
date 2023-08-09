@@ -14,8 +14,6 @@
 
         Clear-CachedObject -Name "TenantConnection" -ErrorAction Stop
 
-        Clear-CachedObject -Name "Configuration" -ErrorAction Stop
-    
         Write-PSFMessage -Message "Cached objects cleared successfully" -Level Verbose  
         
         try 
