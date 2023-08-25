@@ -4,7 +4,7 @@ $ErrorActionPreference = 'Stop'
 
 Import-Module -Name "PnP.PowerShell"           -MinimumVersion "2.2.0"   -Force -ErrorAction Stop
 Import-Module -Name "PSFramework"              -MinimumVersion "1.8.291" -Force -ErrorAction Stop
-# Import-Module -Name "Tenant.SiteCertification" -MinimumVersion "1.0.0"   -Force -ErrorAction Stop
+Import-Module -Name "Tenant.SiteCertification" -MinimumVersion "1.0.0"   -Force -ErrorAction Stop
 
 [System.Net.ServicePointManager]::SecurityProtocol     = [System.Net.SecurityProtocolType]::Tls12
 [System.Net.Http.HttpClient]::DefaultProxy.Credentials = [System.Net.CredentialCache]::DefaultCredentials
