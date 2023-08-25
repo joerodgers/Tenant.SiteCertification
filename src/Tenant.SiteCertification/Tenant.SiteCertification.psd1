@@ -3,7 +3,7 @@
     RootModule = 'Tenant.SiteCertification.psm1'
 
     # Version number of this module.
-    ModuleVersion = '1.2.1'
+    ModuleVersion = '1.2.2'
 
     # ID used to uniquely identify this module
     GUID = '80c500e9-ce8f-4a13-8941-8a7247f61fbb'

@@ -92,11 +92,11 @@ BEGIN
     ON New.SiteUrl = Existing.SiteUrl
     WHEN MATCHED THEN
         UPDATE SET
-            Existing.LockState             = ISNULL(New.LockState,             Existing.LockState ),
-            Existing.LockDate              = ISNULL(New.LockDate,              Existing.LockDate ),
-            Existing.LastCertificationDate = ISNULL(New.LastCertificationDate, Existing.LastCertificationDate),
-            Existing.Template              = ISNULL(New.Template,              Existing.Template ),
-            Existing.NoticeCount           = CASE WHEN Existing.LockState <> New.LockState THEN 0 ELSE ISNULL(New.NoticeCount, Existing.NoticeCount) END,
+            Existing.LockState             = ISNULL(New.LockState, Existing.LockState),
+            Existing.LockDate              = CASE WHEN New.LockState = 0 OR New.LockState = 1 THEN NULL ELSE ISNULL(New.LockDate, Existing.LockDate) END,
+            Existing.LastCertificationDate = CASE WHEN Existing.LockState <> New.LockState THEN New.LastCertificationDate ELSE Existing.LastCertificationDate END,
+            Existing.Template              = ISNULL(New.Template, Existing.Template),
+            Existing.NoticeCount           = CASE WHEN Existing.LockState <> New.LockState THEN 0 ELSE Existing.NoticeCount END,
             Existing.RowUpdated            = New.RowUpdated
     WHEN NOT MATCHED BY TARGET THEN
         INSERT
