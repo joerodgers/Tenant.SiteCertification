@@ -10,7 +10,7 @@ BEGIN
         sitecertification.SiteCollection
     SET
         LockDate   = @date,
-        LockState  = 1,
+        LockState  = 2,
         RowUpdated = @timestamp
     WHERE
         SiteUrl = @siteUrl
