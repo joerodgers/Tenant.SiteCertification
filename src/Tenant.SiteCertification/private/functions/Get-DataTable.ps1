@@ -61,8 +61,6 @@
                 }
             }
 
-            Write-PSFMessage -Level Debug -Message "Executing Query: $Query"
-
             $null = $dataAdapter.Fill($dataSet)
 
             switch( $As )

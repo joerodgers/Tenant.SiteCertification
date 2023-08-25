@@ -3,7 +3,7 @@
     RootModule = 'Tenant.SiteCertification.psm1'
 
     # Version number of this module.
-    ModuleVersion = '1.1.0'
+    ModuleVersion = '1.2.0'
 
     # ID used to uniquely identify this module
     GUID = '80c500e9-ce8f-4a13-8941-8a7247f61fbb'
@@ -42,7 +42,8 @@
                         'Set-SiteCollectionNoAccess',
                         'Set-SiteCollectionUnlock',
                         'Get-Configuration',
-                        'Set-Configuration'
+                        'Set-Configuration',
+                        'Remove-SiteCollection'
 
     DefaultCommandPrefix = "SiteCertification" 
 }

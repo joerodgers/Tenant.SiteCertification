@@ -36,7 +36,6 @@ BEGIN
 
     DECLARE @cursor     cursor
     DECLARE @siteUrl    nvarchar(500)
-    DECLARE @auditEvent nvarchar(400)
 
     -- add an audit event for each row in the #merged table
     SET @cursor = CURSOR 
@@ -54,7 +53,7 @@ BEGIN
 
         EXEC sitecertification.proc_AddSiteCollectionAuditEvent @siteUrl, 'SiteDeleted', @timestamp;
         
-        FETCH next FROM @cursor INTO @siteUrl, @auditEvent;
+        FETCH next FROM @cursor INTO @siteUrl
     END
         
 END

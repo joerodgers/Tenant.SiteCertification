@@ -3,19 +3,13 @@
     [CmdletBinding()]
     param
     (
+        [Parameter(Mandatory=$false)]
+        [DateTime]
+        $DateTime = [DateTime]::Today
     )
 
     process
     {
-        $configuration = Get-DataTable -StoredProcedure "sitecertification.proc_GetSiteCertificationConfiguration" -As PSObject -ErrorAction Stop
-
-        $parameters = @{
-            datetime                        = $configuration.ExecutionDate
-            notificationsBeforeNoAccessLock = $configuration.NotificationsBeforeNoAccessLock
-            verificationIntervalDays        = $configuration.VerificationIntervalDays
-            notificationFrequencyDays       = $configuration.NotificationFrequencyDays
-        }
-
-        Get-DataTable -StoredProcedure "sitecertification.proc_GetSiteCollectionsForNoAccessLock" -Parameters $parameters -As "PSObject"
+        Get-DataTable -StoredProcedure "sitecertification.proc_GetSiteCollectionsForNoAccessLock" -Parameters @{ datetime = $DateTime } -As "PSObject"
     }
 }
