@@ -111,6 +111,17 @@
             {
                 $dataAdapter.Dispose()
             }
+
+            if($command)
+            {
+                $command.Dispose()
+            }
+
+            if($connection)
+            {
+                $connection.Close()
+                $connection.Dispose()
+            }
         }
     }
     end
