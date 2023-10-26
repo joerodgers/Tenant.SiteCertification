@@ -10,7 +10,7 @@ BEGIN
     EXEC @notificationsBeforeNoAccessLock = sitecertification.proc_GetSiteCertificationConfigurationValue 'NotificationsBeforeNoAccessLock'
     EXEC @verificationIntervalDays        = sitecertification.proc_GetSiteCertificationConfigurationValue 'VerificationIntervalDays'
     EXEC @notificationFrequencyDays       = sitecertification.proc_GetSiteCertificationConfigurationValue 'NotificationFrequencyDays'
-
+    
     SELECT
         SiteUrl,
         LockState,
@@ -25,6 +25,7 @@ BEGIN
         SiteUrl NOT IN (SELECT SiteUrl FROM sitecertification.SiteCollectionExclusion) AND
         LockState = 0 AND
         NoticeCount <= @notificationsBeforeNoAccessLock AND
+        ABS(DATEDIFF(DAY, @datetime, LastCertificationDate)) >= @verificationIntervalDays AND
         ((ABS(DATEDIFF(DAY, @datetime, LastCertificationDate)) - @verificationIntervalDays) % @notificationFrequencyDays) = 0 AND
         LastCertificationDate <= @datetime
 
