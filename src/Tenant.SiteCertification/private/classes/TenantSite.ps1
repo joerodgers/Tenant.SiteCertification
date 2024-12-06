@@ -3,9 +3,10 @@ namespace Tenant.SiteCertification
 {
     public enum LockState
     {
-        Unlock   = 0,
-        ReadOnly = 1,
-        NoAccess = 2    
+        Unlock      = 0,
+        ReadOnly    = 1,
+        NoAccess    = 2,
+        NoAdditions = 3 // added 12-06-2024 to prevent errors for write locked sites   
     }
 
     public class TenantSite
