@@ -137,7 +137,7 @@ BEGIN
         FROM
             #merged
         WHERE
-            EventType IN ( 'INSERT', 'DELETE' )
+            EventType IN ( 'INSERT', 'DELETE', 'UPDATE' )
     
     OPEN @cursor  
 
